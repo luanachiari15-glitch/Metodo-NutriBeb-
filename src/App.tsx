@@ -136,7 +136,7 @@ export default function App() {
               >
                 <img 
                   src="https://i.ibb.co/MkHGqvXh/mockup-br.png" 
-                  alt="Mockup Nutribebê" 
+                  alt="Mockup NutriBebê" 
                   className="w-full h-auto drop-shadow-2xl"
                   referrerPolicy="no-referrer"
                   decoding="async"
@@ -168,7 +168,7 @@ export default function App() {
             >
               <img 
                 src="https://i.ibb.co/MkHGqvXh/mockup-br.png" 
-                alt="Mockup Nutribebê" 
+                alt="Mockup NutriBebê" 
                 className="w-full h-auto drop-shadow-2xl"
                 referrerPolicy="no-referrer"
                 decoding="async"
@@ -229,7 +229,7 @@ export default function App() {
           </motion.div>
 
           <motion.div {...fadeIn} className="bg-white rounded-3xl p-6 md:p-12 text-slate-900 shadow-2xl">
-            <h3 className="text-xl font-bold mb-6 md:mb-8 text-center">Com o método Nutribebê, você vai:</h3>
+            <h3 className="text-xl font-bold mb-6 md:mb-8 text-center">Com o método NutriBebê, você vai:</h3>
             <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
               {[
                 "Saber exatamente o que dar em cada fase",
@@ -415,7 +415,7 @@ export default function App() {
                 <div className="flex items-center gap-2 text-brand-rose font-bold mb-2 text-xs">
                   <div className="w-2 h-2 rounded-full bg-brand-rose"></div> KIT COMPLETO
                 </div>
-                <h3 className="text-xl font-black mb-4">Kit Completo Nutribebê</h3>
+                <h3 className="text-xl font-black mb-4">Kit Completo NutriBebê</h3>
                 <div className="flex items-baseline gap-2 mb-4">
                   <span className="text-slate-400 line-through text-base">R$ 147</span>
                   <span className="text-3xl font-black text-slate-900">R$ 27</span>
@@ -527,7 +527,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="py-10 px-4 bg-slate-50 border-t border-slate-200 text-center text-slate-500 text-sm">
-        <p>© 2026 Método Nutribebê. Todos os direitos reservados.</p>
+        <p>© 2026 Método NutriBebê. Todos os direitos reservados.</p>
       </footer>
     </div>
   );
