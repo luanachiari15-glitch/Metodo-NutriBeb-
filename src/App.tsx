@@ -29,53 +29,53 @@ const fadeIn = {
   transition: { duration: 0.6 }
 };
 
+const faqData = [
+  {
+    q: "💬 E se eu não souber absolutamente nada sobre introdução alimentar?",
+    a: "Perfeito — esse método foi feito justamente pra você. Você vai receber um passo a passo simples e direto, como se alguém estivesse te guiando em cada fase."
+  },
+  {
+    q: "💬 Tenho muito medo de engasgo… isso me ajuda mesmo?",
+    a: "Sim. Você vai ter acesso ao manual anti-engasgo + explicação do reflexo GAG, de forma simples, pra te dar mais segurança na hora de oferecer os alimentos."
+  },
+  {
+    q: "💬 E se meu bebê já rejeita comida?",
+    a: "Isso é mais comum do que parece. Você vai entender os erros que causam essa rejeição e como corrigir de forma prática já nas próximas refeições."
+  },
+  {
+    q: "💬 É complicado de aplicar na rotina?",
+    a: "Não. Tudo foi pensado para ser simples, rápido e fácil, mesmo pra mães com pouco tempo. Nada de receitas difíceis ou processos complicados."
+  },
+  {
+    q: "💬 Como eu recebo o material?",
+    a: "O acesso é 100% digital e imediato. Assim que a compra for confirmada, você já recebe tudo e pode começar na mesma hora."
+  },
+  {
+    q: "💬 E se eu não gostar?",
+    a: "Você tem 7 dias de garantia. Se não fizer sentido pra você, é só pedir reembolso. Sem complicação."
+  }
+];
+
+const previewImages = [
+  "https://i.ibb.co/JP2fJGz/1.png",
+  "https://i.ibb.co/KcrfsrhC/2.png",
+  "https://i.ibb.co/ycmBDs9Z/3.png",
+  "https://i.ibb.co/yFXkYPkh/4.png",
+  "https://i.ibb.co/F4f8h1PH/5.png",
+  "https://i.ibb.co/6R0jFPgb/6.png"
+];
+
+const testimonialImages = [
+  "https://i.ibb.co/RkWjRgvp/instagram-dm.png",
+  "https://i.ibb.co/Kcw6LfvX/instagram-dm-2.png",
+  "https://i.ibb.co/hJ4WPF4X/instagram-dm-1.png",
+  "https://i.ibb.co/whqXgx89/whatsapp-chat.png"
+];
+
 export default function App() {
   const [timeLeft, setTimeLeft] = useState(15 * 60); // 15 minutes in seconds
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [showUpsell, setShowUpsell] = useState(false);
-
-  const faqData = [
-    {
-      q: "💬 E se eu não souber absolutamente nada sobre introdução alimentar?",
-      a: "Perfeito — esse método foi feito justamente pra você. Você vai receber um passo a passo simples e direto, como se alguém estivesse te guiando em cada fase."
-    },
-    {
-      q: "💬 Tenho muito medo de engasgo… isso me ajuda mesmo?",
-      a: "Sim. Você vai ter acesso ao manual anti-engasgo + explicação do reflexo GAG, de forma simples, pra te dar mais segurança na hora de oferecer os alimentos."
-    },
-    {
-      q: "💬 E se meu bebê já rejeita comida?",
-      a: "Isso é mais comum do que parece. Você vai entender os erros que causam essa rejeição e como corrigir de forma prática já nas próximas refeições."
-    },
-    {
-      q: "💬 É complicado de aplicar na rotina?",
-      a: "Não. Tudo foi pensado para ser simples, rápido e fácil, mesmo pra mães com pouco tempo. Nada de receitas difíceis ou processos complicados."
-    },
-    {
-      q: "💬 Como eu recebo o material?",
-      a: "O acesso é 100% digital e imediato. Assim que a compra for confirmada, você já recebe tudo e pode começar na mesma hora."
-    },
-    {
-      q: "💬 E se eu não gostar?",
-      a: "Você tem 7 dias de garantia. Se não fizer sentido pra você, é só pedir reembolso. Sem complicação."
-    }
-  ];
-
-  const previewImages = [
-    "https://i.ibb.co/JP2fJGz/1.png",
-    "https://i.ibb.co/KcrfsrhC/2.png",
-    "https://i.ibb.co/ycmBDs9Z/3.png",
-    "https://i.ibb.co/yFXkYPkh/4.png",
-    "https://i.ibb.co/F4f8h1PH/5.png",
-    "https://i.ibb.co/6R0jFPgb/6.png"
-  ];
-
-  const testimonialImages = [
-    "https://i.ibb.co/RkWjRgvp/instagram-dm.png",
-    "https://i.ibb.co/Kcw6LfvX/instagram-dm-2.png",
-    "https://i.ibb.co/hJ4WPF4X/instagram-dm-1.png",
-    "https://i.ibb.co/whqXgx89/whatsapp-chat.png"
-  ];
 
   useEffect(() => {
     if (timeLeft <= 0) return;
@@ -89,6 +89,12 @@ export default function App() {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  const trackPixelEvent = (eventName: string, params?: object) => {
+    if (typeof (window as any).fbq === 'function') {
+      (window as any).fbq('track', eventName, params);
+    }
   };
 
   return (
@@ -112,6 +118,7 @@ export default function App() {
             className="w-full h-full object-cover blur-md opacity-30"
             referrerPolicy="no-referrer"
             decoding="async"
+            loading="eager"
           />
           <div className="absolute inset-0 bg-white/40"></div>
         </div>
@@ -141,6 +148,7 @@ export default function App() {
                   className="w-full h-auto drop-shadow-2xl"
                   referrerPolicy="no-referrer"
                   decoding="async"
+                  loading="eager"
                 />
               </motion.div>
 
@@ -173,6 +181,7 @@ export default function App() {
                 className="w-full h-auto drop-shadow-2xl"
                 referrerPolicy="no-referrer"
                 decoding="async"
+                loading="eager"
               />
             </motion.div>
           </div>
@@ -397,7 +406,10 @@ export default function App() {
               </ul>
 
               <button 
-                onClick={() => setShowUpsell(true)}
+                onClick={() => {
+                  setShowUpsell(true);
+                  trackPixelEvent('InitiateCheckout', { content_name: 'Kit Essencial' });
+                }}
                 className="w-full py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-2xl transition-all active:scale-95 flex items-center justify-center gap-2 text-sm"
               >
                 QUERO O ESSENCIAL <ArrowRight size={16} />
@@ -446,6 +458,7 @@ export default function App() {
                 href="https://pay.wiapy.com/69c9a53d63055551269a0665"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackPixelEvent('InitiateCheckout', { content_name: 'Kit Completo' })}
                 className="w-full py-3.5 bg-brand-green hover:bg-brand-green-dark text-white font-black rounded-2xl transition-all shadow-lg active:scale-95 flex items-center justify-center gap-2 animate-pulse text-sm"
               >
                 QUERO O COMPLETO AGORA <ArrowRight size={16} />
@@ -581,6 +594,7 @@ export default function App() {
                     href="https://pay.wiapy.com/RJIlwag6t"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackPixelEvent('InitiateCheckout', { content_name: 'Upsell Kit Completo' })}
                     className="w-full py-4 bg-brand-green hover:bg-brand-green-dark text-white font-black rounded-2xl transition-all shadow-lg flex items-center justify-center gap-2 animate-bounce text-base"
                   >
                     SIM! QUERO O COMPLETO POR R$ 23 <ArrowRight size={20} />
@@ -589,6 +603,7 @@ export default function App() {
                     href="https://pay.wiapy.com/kxDP3w0KLw"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackPixelEvent('InitiateCheckout', { content_name: 'Kit Essencial (After Upsell)' })}
                     className="block text-slate-400 hover:text-slate-600 text-xs font-medium underline transition-colors"
                   >
                     Não, obrigado. Quero apenas o Kit Essencial por R$ 17.
