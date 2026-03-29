@@ -32,6 +32,7 @@ const fadeIn = {
 export default function App() {
   const [timeLeft, setTimeLeft] = useState(15 * 60); // 15 minutes in seconds
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [showUpsell, setShowUpsell] = useState(false);
 
   const faqData = [
     {
@@ -395,7 +396,10 @@ export default function App() {
                 ))}
               </ul>
 
-              <button className="w-full py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-2xl transition-all active:scale-95 flex items-center justify-center gap-2 text-sm">
+              <button 
+                onClick={() => setShowUpsell(true)}
+                className="w-full py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-2xl transition-all active:scale-95 flex items-center justify-center gap-2 text-sm"
+              >
                 QUERO O ESSENCIAL <ArrowRight size={16} />
               </button>
             </motion.div>
@@ -438,9 +442,14 @@ export default function App() {
                 ))}
               </ul>
 
-              <button className="w-full py-3.5 bg-brand-green hover:bg-brand-green-dark text-white font-black rounded-2xl transition-all shadow-lg active:scale-95 flex items-center justify-center gap-2 animate-pulse text-sm">
+              <a 
+                href="https://pay.wiapy.com/69c9a53d63055551269a0665"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3.5 bg-brand-green hover:bg-brand-green-dark text-white font-black rounded-2xl transition-all shadow-lg active:scale-95 flex items-center justify-center gap-2 animate-pulse text-sm"
+              >
                 QUERO O COMPLETO AGORA <ArrowRight size={16} />
-              </button>
+              </a>
             </motion.div>
           </div>
         </div>
@@ -529,6 +538,67 @@ export default function App() {
       <footer className="py-10 px-4 bg-slate-50 border-t border-slate-200 text-center text-slate-500 text-sm">
         <p>© 2026 Método NutriBebê. Todos os direitos reservados.</p>
       </footer>
+
+      {/* Upsell Popup */}
+      <AnimatePresence>
+        {showUpsell && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowUpsell(false)}
+              className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm"
+            />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="bg-white rounded-[32px] p-8 md:p-10 max-w-md w-full relative z-10 shadow-2xl border-4 border-brand-yellow"
+            >
+              <div className="text-center">
+                <div className="inline-block bg-brand-yellow text-brand-rose-dark font-black px-4 py-1 rounded-full text-xs mb-6 uppercase tracking-widest">
+                  OFERTA ÚNICA E EXCLUSIVA 🎁
+                </div>
+                <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-4 leading-tight">
+                  ESPERE! <br />
+                  <span className="text-brand-rose">NÃO VÁ AINDA!</span>
+                </h2>
+                <p className="text-slate-600 text-sm md:text-base mb-8">
+                  Vimos que você se interessou pelo Kit Essencial. Que tal levar o <span className="font-bold text-slate-900">Kit Completo (Premium)</span> com todos os bônus exclusivos por um valor especial?
+                </p>
+
+                <div className="bg-slate-50 rounded-2xl p-6 mb-8 border border-slate-100">
+                  <p className="text-slate-400 line-through text-sm mb-1">De R$ 147,00</p>
+                  <p className="text-slate-500 text-xs mb-2">Por apenas</p>
+                  <div className="text-4xl font-black text-brand-green">
+                    R$ 23,00
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <a 
+                    href="https://pay.wiapy.com/RJIlwag6t"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-4 bg-brand-green hover:bg-brand-green-dark text-white font-black rounded-2xl transition-all shadow-lg flex items-center justify-center gap-2 animate-bounce text-base"
+                  >
+                    SIM! QUERO O COMPLETO POR R$ 23 <ArrowRight size={20} />
+                  </a>
+                  <a 
+                    href="https://pay.wiapy.com/kxDP3w0KLw"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-slate-400 hover:text-slate-600 text-xs font-medium underline transition-colors"
+                  >
+                    Não, obrigado. Quero apenas o Kit Essencial por R$ 17.
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
