@@ -4,6 +4,9 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
@@ -30,6 +33,7 @@ h1, h2, h3, h4 {
 section:not(#hero) {
   content-visibility: auto;
   contain-intrinsic-size: 1px 500px;
+  contain: content;
 }
 
 .scrollbar-hide::-webkit-scrollbar {

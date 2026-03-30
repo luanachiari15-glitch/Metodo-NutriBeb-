@@ -115,6 +115,8 @@ export default function App() {
           <img 
             src="https://i.imgur.com/LTbCEvG.jpg" 
             alt="Background" 
+            width="1920"
+            height="1080"
             className="w-full h-full object-cover blur-md opacity-30"
             referrerPolicy="no-referrer"
             decoding="async"
@@ -146,6 +148,8 @@ export default function App() {
                 <img 
                   src="https://i.ibb.co/MkHGqvXh/mockup-br.png" 
                   alt="Mockup NutriBebê" 
+                  width="800"
+                  height="800"
                   className="w-full h-auto drop-shadow-2xl"
                   referrerPolicy="no-referrer"
                   decoding="async"
@@ -180,6 +184,8 @@ export default function App() {
               <img 
                 src="https://i.ibb.co/MkHGqvXh/mockup-br.png" 
                 alt="Mockup NutriBebê" 
+                width="800"
+                height="800"
                 className="w-full h-auto drop-shadow-2xl"
                 referrerPolicy="no-referrer"
                 decoding="async"
@@ -301,6 +307,8 @@ export default function App() {
                     <img 
                       src={src} 
                       alt={`Preview ${i + 1}`} 
+                      width="400"
+                      height="600"
                       className="w-full h-auto rounded-xl"
                       referrerPolicy="no-referrer"
                       loading="lazy"
@@ -347,6 +355,8 @@ export default function App() {
                     <img 
                       src={src} 
                       alt={`Depoimento ${i + 1}`} 
+                      width="400"
+                      height="700"
                       className="w-full h-auto rounded-xl"
                       referrerPolicy="no-referrer"
                       loading="lazy"
