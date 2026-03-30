@@ -121,7 +121,7 @@ export default function App() {
             referrerPolicy="no-referrer"
             decoding="async"
             loading="eager"
-            fetchpriority="low"
+            fetchPriority="low"
           />
           <div className="absolute inset-0 bg-white/40"></div>
         </div>
@@ -154,7 +154,7 @@ export default function App() {
                   referrerPolicy="no-referrer"
                   decoding="async"
                   loading="eager"
-                  fetchpriority="high"
+                  fetchPriority="high"
                 />
               </motion.div>
 
@@ -190,7 +190,7 @@ export default function App() {
                 referrerPolicy="no-referrer"
                 decoding="async"
                 loading="eager"
-                fetchpriority="high"
+                fetchPriority="high"
               />
             </motion.div>
           </div>
